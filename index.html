@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>低多边形主页</title>
+		<script type="text/javascript" src="js/three.min.js" ></script>
+		<script type="text/javascript" src="js/orbitControls.js" ></script>
+		<script type="text/javascript" src="js/world.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+		<link rel="stylesheet" href="css/world.css" />
+	</head>
+	<body>
+		<nav id="nav">
+			<input type="checkbox" class="nav__cb" id="menu-cb"/>
+				<div class="nav__content">
+				    <ul class="nav__items">
+				      <li class="nav__item"> <span class="nav__item-text"> 主页 </span> </li>
+				      <li class="nav__item"> <span class="nav__item-text"> 相册 </span> </li>
+				      <li class="nav__item"> <span class="nav__item-text"> 日志 </span> </li>
+				      <li class="nav__item"> <span class="nav__item-text"> ME </span> </li>
+				    </ul>
+			    </div>
+		    <label class="nav__btn" for="menu-cb"></label>
+    	</nav>
+    	
+		<div id="music">
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+		</div>
+		<div id="word"><h1><span class="sp_01">L</span>ow <span class="sp_02">P</span>olygon <span class="sp_03">W</span>orld</h1></div>
+		<script type="text/javascript" src="js/animation.js" ></script>		
+		<audio id="bg-song" src="bgMusic/bgMusic.mp3" autoplay="autoplay" loop="loop"></audio>
+		
+		<div id="world"></div>		
+	</body>
+</html>
