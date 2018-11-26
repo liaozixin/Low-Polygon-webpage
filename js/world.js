@@ -99,7 +99,7 @@ function createModel(){
 	    tailPlane.receiveShadow = true;
 		this.mesh.add(tailPlane);
 	
-	    var geomSideWing = new THREE.BoxGeometry(40, 8, 50, 1, 1, 1);
+	    var geomSideWing = new THREE.BoxGeometry(40, 8, 100, 1, 1, 1);
 	    var matSideWing = new THREE.MeshPhongMaterial({color:0xf25346, shading:THREE.FlatShading});
 	    var sideWing = new THREE.Mesh(geomSideWing, matSideWing);
 	    sideWing.position.set(0, 0, 0);
@@ -129,6 +129,15 @@ function createModel(){
 	airplane.mesh.position.y = 3;
 	airplane.mesh.position.z = 4;
 	scene.add(airplane.mesh);
+	sphereMesh = new THREE.Mesh(new THREE.SphereGeometry(0.1,0.1,0.1),new THREE.MeshLambertMaterial({color:0xff00FF}));
+	sphereMesh.position.set(0, 3, 0);
+	
+	var pivotPoint = new THREE.Object3D();
+	pivotPoint.add(airplane.mesh);
+	pivotPoint.position.y = -2;
+	sphereMesh.add(pivotPoint);
+	scene.add(sphereMesh);
+	sphereMesh.name = 'rotating';
 	
 	Cloud = function(arc) {
         THREE.Group.apply(this, arguments)
@@ -197,11 +206,7 @@ function createParticles(){
 	cloud.verticesNeedUpdate = true;
 	scene.add(cloud);
 }
-	
-var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2();
 
-var controls;
 function initControls() {
 	controls = new THREE.OrbitControls(camera, renderer.domElement);
 	
@@ -221,6 +226,7 @@ function initControls() {
 
 function moveAirPlane(){
 	airplane.propeller.rotation.x += 0.3;
+	scene.getObjectByName('rotating').rotation.y += 0.01;
 }
 
 function loop(){
